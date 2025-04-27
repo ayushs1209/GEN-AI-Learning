@@ -1,0 +1,391 @@
+/* Basic Reset and Base Styles */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding-top: 70px;
+    transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for theme change */
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+/* --- CSS Variables for Theming --- */
+/* Default (Dark Mode) Variables */
+body.dark-mode {
+    --bg-color: #1a1a2e; /* Dark background */
+    --bg-gradient: linear-gradient(to bottom right, #2b2bb9, #3161e7); /* Dark background gradient */
+    --text-color: #357cda; /* Light text */
+    --text-color-secondary: #bbbbbb; /* Slightly darker light text */
+    --header-bg: rgba(26, 26, 46, 0.9); /* Semi-transparent dark header */
+    --card-bg: #4b2c49; /* Darker card background */
+    --card-shadow: rgba(0, 0, 0, 0.3); /* Darker shadow */
+    --accent-cool-1: navy; /* Cool accent start */
+    --accent-cool-2: #c2e9fb; /* Cool accent end */
+    --accent-warm-1: #ffecd2; /* Warm accent start */
+    --accent-warm-2: #fcb69f; /* Warm accent end */
+    --section-alt-bg: #243447; /* Alternative dark section background */
+    --link-color: #89b4f5; /* Light blue link */
+    --link-hover-color: #a6c8ff; /* Lighter blue link on hover */
+    --footer-bg: #0f0f1e; /* Very dark footer */
+    --footer-text: #aaaaaa; /* Lighter footer text */
+    --highlight-gradient: linear-gradient(to right, var(--accent-warm-1), var(--accent-warm-2)); /* Warm gradient for highlight */
+    --nav-link-underline-gradient: linear-gradient(to right, var(--accent-cool-1), var(--accent-cool-2)); /* Cool gradient for nav underline */
+    --section-title-underline-gradient: linear-gradient(to right, var(--accent-cool-1), var(--accent-cool-2)); /* Cool gradient for section title underline */
+}
+
+/* Light Mode Variables (Overrides) */
+body.light-mode {
+    --bg-color: #ffffff;
+    --bg-gradient: linear-gradient(to bottom right, #e0f2f7, #b3e5fc);
+    --text-color: #333;
+    --text-color-secondary: #555;
+    --header-bg: rgba(255, 255, 255, 0.9);
+    --card-bg: #fff;
+    --card-shadow: rgba(0, 0, 0, 0.08);
+    --accent-cool-1: #007bff;
+    --accent-cool-2: #0056b3; /* Use solid colors or different gradients if preferred */
+    --accent-warm-1: #ffecd2;
+    --accent-warm-2: #fcb69f;
+    --section-alt-bg: #f8f9fa;
+    --link-color: #007bff;
+    --link-hover-color: #0056b3;
+    --footer-bg: #333;
+    --footer-text: #eee;
+    --highlight-gradient: linear-gradient(to right, var(--accent-warm-1), var(--accent-warm-2));
+    --nav-link-underline-gradient: linear-gradient(to right, #a1c4fd, #c2e9fb);
+    --section-title-underline-gradient: linear-gradient(to right, #a1c4fd, #c2e9fb);
+}
+
+
+/* Apply Variables */
+body {
+    background: var(--bg-gradient);
+    color: var(--text-color);
+}
+
+header {
+    background: var(--header-bg);
+    backdrop-filter: blur(5px);
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px var(--card-shadow); /* Use card-shadow var */
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: var(--text-color); /* Use text-color var */
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center; /* Vertically align button and links */
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color-secondary); /* Use secondary text color */
+    font-weight: 400;
+    font-size: 1.1em;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Navigation Hover Effect (Underline) */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: var(--nav-link-underline-gradient); /* Use gradient var */
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--link-color); /* Use link-color var */
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Theme Toggle Button Styling */
+#theme-toggle {
+    background: none; /* No default button background */
+    border: none;
+    color: var(--text-color-secondary); /* Same color as nav links */
+    font-size: 1.1em;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    font-weight: 400;
+}
+
+#theme-toggle:hover {
+    color: var(--link-color); /* Same hover color as links */
+    /* Optional: Add a subtle background on hover */
+    /* background-color: rgba(255, 255, 255, 0.1); Light mode: rgba(0, 0, 0, 0.05); */
+}
+
+
+/* Hero Section Styling */
+#hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(to right, var(--accent-cool-1), var(--accent-cool-2)); /* Use cool gradient var */
+    color: var(--text-color); /* Ensure text uses the theme color */
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.hero-content .highlight {
+    font-weight: 600;
+    background: var(--highlight-gradient); /* Use highlight gradient var */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-content p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    color: var(--text-color-secondary); /* Use secondary text color */
+}
+
+.cta-button {
+    display: inline-block;
+    background: var(--highlight-gradient); /* Use highlight gradient var */
+    color: var(--text-color); /* Use text-color for contrast */
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px var(--card-shadow); /* Use card-shadow var */
+}
+
+/* CTA Button Hover Effect */
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--card-shadow); /* Use card-shadow var */
+    opacity: 0.9;
+}
+
+
+/* Section Styling */
+section {
+    padding: 80px 0;
+    transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition */
+}
+
+section:nth-of-type(even) {
+    background-color: var(--section-alt-bg); /* Use alternative background var */
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: var(--text-color); /* Use text-color var */
+    position: relative;
+}
+
+/* Underline for section titles */
+section h2::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 3px;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--section-title-underline-gradient); /* Use gradient var */
+    border-radius: 5px;
+}
+
+
+/* Project Grid and Card Styling */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+section#about {
+    text-align: center;
+}
+
+.project-card {
+    background-color: var(--card-bg); /* Use card background var */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px var(--card-shadow); /* Use card-shadow var */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.5s ease; /* Add transition */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Project Card Hover Effect */
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px var(--card-shadow); /* Use card-shadow var */
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-content h3 {
+    margin-top: 0;
+    color: var(--text-color); /* Use text-color var */
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    color: var(--text-color-secondary); /* Use secondary text color */
+    margin-bottom: 15px;
+    font-size: 0.95em;
+}
+
+.project-link {
+    display: inline-block;
+    color: var(--link-color); /* Use link-color var */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+/* Project Link Hover Effect */
+.project-link:hover {
+    color: var(--link-hover-color); /* Use link-hover-color var */
+    text-decoration: underline;
+}
+
+/* Contact Section Styling */
+#contact {
+    text-align: center;
+}
+
+.contact-info {
+     font-size: 1.1em;
+     margin: 10px 0;
+     color: var(--text-color-secondary); /* Use secondary text color */
+}
+
+.contact-info a {
+    color: var(--link-color); /* Use link-color var */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Contact Link Hover Effect */
+.contact-info a:hover {
+     color: var(--link-hover-color); /* Use link-hover-color var */
+     text-decoration: underline;
+}
+
+
+/* Footer Styling */
+footer {
+    background-color: var(--footer-bg); /* Use footer background var */
+    color: var(--footer-text); /* Use footer text var */
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+    transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition */
+}
+
+footer p {
+    margin: 0;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        padding: 10px 20px;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    #theme-toggle {
+        margin-top: 10px; /* Add space above button on mobile */
+    }
+
+    #hero h1 {
+        font-size: 2em;
+    }
+
+    #hero p {
+        font-size: 1em;
+    }
+
+    section {
+        padding: 50px 0;
+    }
+
+    section h2 {
+        font-size: 2em;
+    }
+
+    .project-grid {
+        gap: 20px;
+    }
+
+    .project-card img {
+         height: 180px;
+    }
+}

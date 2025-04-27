@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Guess the Number!</h1>
+        <p>Guess a number between 0 and 10.</p>
+
+        <div class="info-area">
+            <p id="tries-left">Tries Left: 3</p>
+            <p id="feedback-message"></p>
+        </div>
+
+        <div class="slider-area">
+            <label for="guessSlider">Your Guess:</label>
+            <input type="range" id="guessSlider" min="0" max="10" value="5">
+            <span id="current-guess-value">5</span>
+        </div>
+
+        <div class="button-area">
+            <button id="submit-guess-btn">Submit Guess</button>
+            <button id="restart-game-btn">Restart Game</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

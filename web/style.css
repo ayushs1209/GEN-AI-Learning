@@ -1,0 +1,105 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.game-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.info-area p {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#feedback-message {
+    color: #d9534f; /* Default for error/hints */
+    min-height: 1em; /* Reserve space */
+}
+
+.slider-area {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px; /* Space between elements */
+}
+
+.slider-area label {
+    flex-shrink: 0; /* Don't shrink label */
+}
+
+#guessSlider {
+    flex-grow: 1; /* Slider takes up available space */
+}
+
+#current-guess-value {
+    font-weight: bold;
+    color: #0275d8;
+    min-width: 20px; /* Ensure space for two digits */
+    text-align: right;
+}
+
+
+.button-area button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+#submit-guess-btn {
+    background-color: #5cb85c;
+    color: white;
+}
+
+#submit-guess-btn:hover:not(:disabled) {
+    background-color: #4cae4c;
+}
+
+#submit-guess-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+#restart-game-btn {
+    background-color: #0275d8;
+    color: white;
+}
+
+#restart-game-btn:hover {
+     background-color: #025aa5;
+}
+
+/* Styles for win/lose messages */
+#feedback-message.win {
+    color: #5cb85c; /* Green for win */
+}
+
+#feedback-message.lose {
+    color: #d9534f; /* Red for lose */
+}

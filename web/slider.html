@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Slider Game</title>
+  <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+  <div class="container">
+  <h1>Guess the Number (0-10)</h1>
+  <p>Try to guess the number using the slider. You have 3 tries.</p>
+
+  <div class="game-area">
+  <input type="range" min="0" max="10" value="5" id="numberSlider">
+  <p>Your guess: <span id="guessValue">5</span></p>
+  <button id="guessButton">Guess</button>
+  <p id="message"></p>
+  </div>
+
+  <button id="restartButton">Restart Game</button>
+  </div>
+
+  <script src="script.js"></script>
+ </body>
+ </html>
