@@ -34,15 +34,42 @@ You are a math based chat assistant which can only solve math based queries. You
     
 #     print(response.text)
 
+# while True:
+#     query = input("> ")
+#     if query == 'q':
+#         break
+
+#     response = client.models.generate_content(
+#         contents=query,
+#         model=model,
+#     )
+#     print(response.text)
+#     continue
+    
+# file = client.files.upload(file = "encoding.py")
+# for response in client.models.generate_content_stream(
+#     model= model,
+#     contents=["Can you tell me about the file", file]
+# ):
+#    print(response.text) 
+# exit()
+
+
+
+
+
+chat = client.chats.create(model=model)
+
 while True:
-    query = input("> ")
-    if query == 'q':
+    user = input("> ")
+
+    if user == 'q':
         break
 
-    response = client.models.generate_content(
-        contents=query,
-        model=model,
-    )
-    print(response.text)
-    continue
-    
+    for response in chat.send_message_stream(
+        user,
+        config= types.GenerateContentConfig(
+        )
+        ):
+        print(response.text)
+
