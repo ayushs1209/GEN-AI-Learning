@@ -33,3 +33,13 @@ make a directory in the exisiting directory by the name of my-portfolio and as t
 
 
 """
+
+
+
+"""
+
+make a directory named my-portfolio in which as the name suggests generate the code files for the portfolio website. tech stack of the website should be html css and javascript. information about the portfolio owner, name ayush sus, i am a softwarte developer specializing in java, python c++. i also have full command over full stack web develpmet using the mern stack, and i also love making RAG applications using Generative Ai. general instructions. the website should follow a aesthetical theme. the default themefor the website should be a dark theme with a dedicated small button to chang ethe theme to light mode and back to dark mode. gradient colors should be strictly used instead of simple plain solid colors. the website should be responsive over different devices and should be full of animations, animations should be smooth and the website should also have hover effects for almost everything and also should have scroll effects too for each type of scroll. all of this should be achieved html css and javascript while following the instructions strictly 
+
+
+
+"""
